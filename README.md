@@ -229,6 +229,3 @@ For more troubleshooting information, refer to:
 - [Ansible Documentation](https://docs.ansible.com/)
 - [VirtualBox Documentation](https://www.virtualbox.org/manual/)
 
-## License
-
-[Add your license information here] 
