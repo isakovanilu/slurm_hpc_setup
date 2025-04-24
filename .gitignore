@@ -1,0 +1,35 @@
+# Terraform
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+
+# Vagrant
+.vagrant/
+*.log
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Sensitive files
+munge.key
+*.pem
+*.key
+id_rsa
+id_rsa.pub
+
+# Ansible
+*.retry
+*.pyc
+__pycache__/
+
+# Temporary files
+*.tmp
+*.temp
+*.swp
+*~
+
+# Log files
+*.log
+logs/ 

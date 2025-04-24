@@ -1,0 +1,29 @@
+- hosts: all
+  become: yes
+  tasks:
+    - name: Install SLURM dependencies
+      apt:
+        name:
+          - slurm-wlm
+          - munge
+          - nfs-common
+        state: present
+        update_cache: yes
+
+- hosts: controller
+  become: yes
+  tasks:
+    - name: Start SLURM controller
+      systemd:
+        name: slurmctld
+        enabled: yes
+        state: started
+
+- hosts: compute
+  become: yes
+  tasks:
+    - name: Start SLURM node daemon
+      systemd:
+        name: slurmd
+        enabled: yes
+        state: started
