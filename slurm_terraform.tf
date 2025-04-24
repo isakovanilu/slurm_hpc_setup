@@ -13,7 +13,6 @@ variable "node_ips" {
 variable "private_key_path" {
   type    = string
   default = "/path/to/your/private/key"
-
 }
 
 resource "null_resource" "slurm_nodes" {

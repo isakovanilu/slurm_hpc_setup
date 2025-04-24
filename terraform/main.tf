@@ -2,12 +2,12 @@ provider "null" {}
 
 variable "node_ips" {
   type    = list(string)
-  default = ["192.168.64.2", "192.168.64.3"]
+  default = ["10.0.0.1", "10.0.0.2", "10.0.0.3", "10.0.0.4"]
 }
 
 variable "private_key_path" {
   type    = string
-  default = "~/.ssh/id_rsa"
+  default = "/path/to/your/private/key"
 }
 
 resource "null_resource" "slurm_nodes" {
