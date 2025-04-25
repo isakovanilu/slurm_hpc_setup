@@ -1,6 +1,57 @@
-# SLURM HPC Cluster Setup
+# SLURM HPC Cluster Setup with Terraform, Ansible and Vagrant
 
 This project automates the setup of a SLURM High-Performance Computing (HPC) cluster using a combination of [Vagrant](https://www.vagrantup.com/docs), [Terraform](https://www.terraform.io/docs), and [Ansible](https://docs.ansible.com/). The cluster consists of a controller node and multiple compute nodes.
+
+## Terraform Configuration
+
+### Main Configuration (terraform/main.tf)
+The main Terraform configuration file defines:
+- Node IP addresses in the 10.0.0.0/24 range
+- SSH connection parameters
+- Basic node provisioning
+- Ansible inventory generation
+
+### SLURM-Specific Configuration (slurm_terraform.tf)
+This file handles SLURM-specific provisioning:
+- Node definitions with roles (controller/compute)
+- Package installation (munge, slurm-wlm)
+- Configuration file distribution
+- Service management
+
+### IP Address Configuration
+The cluster uses the following IP scheme:
+- Controller: 10.0.0.1
+- Compute1: 10.0.0.2
+- Compute2: 10.0.0.3
+- Compute3: 10.0.0.4
+
+### Terraform Variables
+```hcl
+variable "node_ips" {
+  type    = list(string)
+  default = ["10.0.0.1", "10.0.0.2", "10.0.0.3", "10.0.0.4"]
+}
+
+variable "private_key_path" {
+  type    = string
+  default = "/path/to/your/private/key"
+}
+```
+
+### Terraform Resources
+1. **null_resource "slurm_nodes"**
+   - Manages SSH connections to nodes
+   - Installs required packages
+   - Configures hostnames
+   - Distributes configuration files
+   - Manages SLURM services
+
+### Terraform Outputs
+```hcl
+output "configured_nodes" {
+  value = keys(var.node_ips)
+}
+```
 
 ## Files to Include in GitHub
 
