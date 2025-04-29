@@ -1,0 +1,13 @@
+SLURM HPC Monitoring Architecture:
+
++------------+             +------------+
+| Controller |             | Compute 1  |
+| (slurmctld)|             | (slurmd)    |
++------------+             +------------+
+         \                     /
+          \                   /
+          Prometheus Server (on Grafana VM)
+                  |
+               Grafana
+                  |
+        Dashboards + Metrics

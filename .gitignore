@@ -4,6 +4,22 @@
 *.tfstate.backup
 .terraform.lock.hcl
 
+# Sensitive or local files
+dynamic_ips.tfvars.json
+munge.key
+terraform.tfstate
+terraform.tfstate.backup
+id_rsa
+id_rsa.pub
+
+slurm_hpc_full_auto_final/*.json
+slurm_hpc_full_auto_final/*.key
+slurm_hpc_full_auto_final/*.tfstate
+slurm_hpc_full_auto_final/*.tfstate.backup
+slurm_hpc_full_auto_final/*.pem
+slurm_hpc_full_auto_final/*.dynamic_ips
+slurm_hpc_full_auto_final/*.id_rsa
+slurm_hpc_full_auto_final/*.id_rsa.pub
 # Vagrant
 .vagrant/
 *.log
